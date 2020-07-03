@@ -105,13 +105,13 @@ func worker(connection *net.UDPConn, config *AppConfig, flowSequence *uint32, st
         data.Header = header
         data.Payload = payload
 
-        // buffer := buildNFlowPayload(*data)
+        buffer := buildNFlowPayload(*data)
 
-        // _, err := connection.Write(buffer.Bytes())
-        // if err != nil {
-        //     fmt.Printf(Error("\nError connecting to the collector: %s\n", err))
-        //     os.Exit(1)
-        // }
+        _, err := connection.Write(buffer.Bytes())
+        if err != nil {
+            fmt.Printf(Error("\nError connecting to the collector: %s\n", err))
+            os.Exit(1)
+        }
 
         if config.Delay != 0 {
             time.Sleep(time.Duration(config.Delay) * time.Millisecond)
