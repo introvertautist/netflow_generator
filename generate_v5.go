@@ -118,7 +118,7 @@ func worker(connection *net.UDPConn, config *AppConfig, flowSequence *uint32, st
         }
     }
 
-    wg.Done()
+    // wg.Done()
 }
 
 /*
